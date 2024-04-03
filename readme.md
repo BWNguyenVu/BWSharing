@@ -1,7 +1,8 @@
 Website : https://bwsharing.onrender.com/
 
 BWSharing is a free platform that helps users store courses and share courses with each other. Main functions such as authorization, authentication, course contributions, editing, deletion...
-Technologies: NodeJs, ExpressJs, Handlebars, MongoDB
+
+Technologies: NodeJs, ExpressJs, Handlebars, MongoDB, Mongoose, JWT token,...
 1. LOGIN PAGE
 ![alt](https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihbDDWepCmZHZKSeN6oI9j-OUN0UwMQCA1N_YMB0qsBxcC8trvsBNqReiPiQLnGVXM_SXnGkoa2cNun1mf_eTXVrbXcn6KcX8Q=w1765-h1365-v0)
 
