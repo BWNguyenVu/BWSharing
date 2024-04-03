@@ -1,4 +1,5 @@
 Website : https://bwsharing.onrender.com/
+*note: please wait for the Render server to start after sleep. (This process takes 10->15 seconds)
 
 BWSharing is a free platform that helps users store courses and share courses with each other. Main functions such as authorization, authentication, course contributions, editing, deletion...
 
