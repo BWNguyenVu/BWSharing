@@ -6,6 +6,11 @@ mongoose.plugin(slug);
 const Schema = mongoose.Schema;
 
 const Course = new Schema({
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Users',
+      required: true,
+    },
     name: { type: String, required: true },
     description: { type: String},
     image: { type: String },

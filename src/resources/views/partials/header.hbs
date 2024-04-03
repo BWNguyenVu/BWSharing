@@ -1,30 +1,93 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  {{!-- căn lề container --}}
-  <div class="container"> 
-    <a class="navbar-brand" href="/">F8 Education</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="/courses/create">Đăng khóa học</a>
-          <div class="dropdown-divider"></div>        
-        <a class="dropdown-item" href="/me/stored/courses">Khóa học của tôi</a>
-        <a class="dropdown-item" href="/me/stored/news">Tin tức của tôi</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Đăng xuất</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container"> 
+        <img style="width:100px" src="/img/Logo_1.png">
+        <div class="container-between" style="padding-left:50px;">
+          <a href="/" style="color: white;">Trang chủ</a>
         </div>
-      </li>
-    </ul>
-  </div>
-  </div>
-</nav>
+        <div class="container-between" style="padding-left:20px;">
+          <a href="/about" style="color: white;">Giới thiệu</a>
+        </div>
+        <div class="container-between" style="padding-left:20px;">
+          <a href="/courses/create" style="color: white;">Đóng góp khóa học</a>
+        </div>
+        <div class="container-between" style="padding-left:20px;">
+          <a href="/contact" style="color: white;">Liên hệ</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto" id="navbarNav">
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+    <form id="logoutForm" action="/user/log-out" method="POST" style="display: none;">
+        <input type="hidden" id="userId" name="userId">
+        <input type="hidden" id="accessToken" name="accessToken">
+    </form>
+
+    <script>
+      function deleteCookie(name) {
+        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      }
+
+      const auth = async () => {
+        try {
+          const response = await fetch('/user/cookies');
+          const data = await response.json();
+          return data ;
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+          return null;
+        }
+      }
+
+      // Update navbar based on user data
+      const updateNavbar = async () => {
+        const userId = await auth();
+        const navbarNav = document.getElementById('navbarNav');
+
+        if (userId) {
+          const dropdownContent = `
+            <li class="nav-item dropdown" id="userDropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ${userId.firstname}
+                ${userId.lastname} 
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/courses/create">Đóng góp khóa học</a>
+                <div class="dropdown-divider"></div>        
+                <a class="dropdown-item" href="/me/stored/courses/${userId._id}">Khóa học của tôi</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" onclick="deleteCookie('accessToken'); document.getElementById('logoutForm').submit();">Đăng xuất</a>
+              </div>
+            </li>
+          `;
+          navbarNav.innerHTML = dropdownContent;
+        } else {
+          const loginContent = `
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+          `;
+          navbarNav.innerHTML = loginContent;
+        }
+      };
+
+      // Call updateNavbar function on page load
+      updateNavbar();
+    </script>
+</body>
+</html>

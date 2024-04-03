@@ -1,5 +1,7 @@
 const Course = require('../models/Course');
 const { mongooseToObject }= require('../../util/mongoose')
+const axios = require('axios');
+const jwt = require('jsonwebtoken');
 
 class CourseController {
 
@@ -17,16 +19,27 @@ class CourseController {
     }
     
     //[POST]/courses/store (thêm tài nguyên)
-    store(req, res, next){
-        // res.json(req.body);
-        const formData = req.body;
-        formData.image = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`;
-        const course = new Course(formData);
-        course.save()
-            .then(() => res.redirect('/'))
-            .catch(error => {
-            });
-     }
+
+    
+    async store(req, res, next) {
+        try {
+            
+            const tokenFromClient = req.headers["cookie"].split('=')[1];
+            const decoded = jwt.verify(tokenFromClient, process.env.ACCESS_SECRET_KEY);
+            req.jwtDecoded = decoded;
+            const userId = decoded.sub;
+            const formData = req.body;
+            formData.image = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`;
+            const course = new Course(formData);
+            course.userId = userId;
+            await course.save();
+            res.redirect('/');
+        } catch (error) {
+            console.error('Error storing course:', error);
+            res.status(500).json({ error: 'Error storing course' });
+        }
+    }
+    
      //[GET]/courses/:id/edit 
     edit(req, res, next){
         Course.findById(req.params.id)

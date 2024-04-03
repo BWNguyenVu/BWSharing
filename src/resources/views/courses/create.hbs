@@ -1,27 +1,30 @@
 <div class="mt-4">
-    <h3>Đăng khóa học</h3>
+  <h3>Đóng góp khóa học</h3>
 
-<form method="POST" action="/courses/store">
-  <div class="form-group">
-    <label for="name">Tên khóa học</label>
-    <input type="text" class="form-control" id="name" name="name" placeholder="Tên khóa học">
-  </div>
+  <!-- Hiển thị userId -->
 
-  <div class="form-group">
-    <label for="description">Nội dung khóa học</label>
-    <input type="text" class="form-control" id="description" name="description" placeholder="Nội dung khóa học">
-  </div>
+  <form method="POST" action="/courses/store">
 
-  <div class="form-group">
-    <label for="videoId">Id video</label>
-    <input type="text" class="form-control" id="videoId" name="videoId" placeholder="Id video">
-  </div>
+    <div class="form-group">
+      <label for="name">Tên khóa học</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Tên khóa học">
+    </div>
 
-  <div class="form-group">
-    <label for="level">Trình độ</label>
-    <input type="text" class="form-control" id="level" name="level" placeholder="Trình độ">
-  </div>
+    <div class="form-group">
+      <label for="description">Nội dung khóa học</label>
+      <input type="text" class="form-control" id="description" name="description" placeholder="Nội dung khóa học">
+    </div>
 
-  <button type="submit" class="btn btn-primary">Thêm khóa học</button>
-</form>
+    <div class="form-group">
+      <label for="videoId">Id video</label>
+      <input type="text" class="form-control" id="videoId" name="videoId" placeholder="Id video">
+    </div>
+
+    <div class="form-group">
+      <label for="level">Trình độ</label>
+      <input type="text" class="form-control" id="level" name="level" placeholder="Trình độ">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Thêm khóa học</button>
+  </form>
 </div>
