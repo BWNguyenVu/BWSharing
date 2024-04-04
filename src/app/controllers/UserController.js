@@ -17,38 +17,26 @@ class UserController {
      async LoginWithEmailAndPassword(req, res, next) {
         try {
             const { email, password } = req.body;
-    
-            // Check if email and password are provided
             if (!email || !password) {
                 throw new Error('Email and password are required');
             }
-    
-            // Find the user in the database
             const user = await UserModel.findOne({ email: email });
-    
-            // Check if the user exists
             if (!user) {
                 throw new Error('User not found');
             }
-    
-            // Verify the login credentials
             const loginSuccess = await CheckLogin(email, password);
             if (loginSuccess) {
-                // Generate auth token or perform any other necessary actions
-                const authToken = await GenerateAuthToken(user, res); // Fix authToken definition
-                // Redirect to the home page or send success response
+            const authToken = await GenerateAuthToken(user, res);
             const accessTokenId = await TokenController.GenerateToken(user, 'ACCESS', process.env.ACCESS_SECRET_KEY, process.env.ACCESS_TOKEN_LIFE_HOUR + 'h');
-            saveTokenToCookie(res, accessTokenId); // Pass accessTokenId instead of authToken.access.token
+            saveTokenToCookie(res, accessTokenId);
 
                 res.redirect('/');
             } else {
-                // Incorrect password
-                throw new Error('Invalid email or password');
+                let error = "The password that you've entered is incorrect."
+                res.redirect(`/login?error=${error}`)
             }
         } catch (error) {
-            console.error(error);
-            // Return appropriate error response
-            res.status(500).send('Internal Server Error');
+            res.redirect(`/login?error=Email not found`)
         }
     }
     
