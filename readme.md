@@ -3,10 +3,10 @@
 <li>*note: Please wait for the Render server to start after sleep. (This process takes 10->15 seconds)  </li>
 
 <h2>Informations</h2>
+<li> BWSharing is a free platform that helps users store courses and share courses with each other. Main functions such as authorization, authentication, course contributions, editing, deletion...</li>
 <li> FPT University </li>
 <li> Start: December 2023 </li>
 <li>  Progress: 80% </li>
-<li> BWSharing is a free platform that helps users store courses and share courses with each other. Main functions such as authorization, authentication, course contributions, editing, deletion...</li>
 
 <h2> Technologies </h2>
 <li>Server : Render</li>
