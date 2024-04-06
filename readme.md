@@ -3,7 +3,8 @@
 <li>*note: Please wait for the Render server to start after sleep. (This process takes 10->15 seconds)  </li>
 
 <h2>Informations</h2>
-<li> BWSharing is a free platform that helps users store courses and share courses with each other. Main functions such as authorization, authentication, course contributions, editing, deletion...</li>
+<li> BWSharing is a free platform that assists users in storing and sharing courses with each other. Main functions include authorization, authentication, course contribution, editing, deletion, etc. </li>
+<li> Web application built using the MVC architecture.</li>
 <li> FPT University </li>
 <li> Start: December 2023 </li>
 <li>  Progress: 80% </li>
@@ -12,7 +13,7 @@
 <li>Server : Render</li>
 <li>Database: MongoDB atlas</li>
 <li> Backend:  Nodejs, Expressjs, JWT </li>
-<li> Frontend: HTML, SCSS, Handlebars, Javascript</li>
+<li> Frontend: HTML, SCSS, Handlebars, Javascript, Bootstrap</li>
 
 <h2> References</h2>
 <li> F8: https://fullstack.edu.vn/</li>
