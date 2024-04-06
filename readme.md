@@ -1,6 +1,6 @@
 <h1>BW SHARING</h1>
-<h3>Website: https://bwsharing.onrender.com/</h3>
-*note: Please wait for the Render server to start after sleep. (This process takes 10->15 seconds)
+<h2>Website: https://bwsharing.onrender.com/</h2>
+<h3>*note: Please wait for the Render server to start after sleep. (This process takes 10->15 seconds)  </h3>
 
 <h2>Informations</h2>
 <li> FPT University </li>
