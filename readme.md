@@ -23,8 +23,11 @@
 <li> User can view "Khóa học của tôi" and edit, delete courses</li>
 <li> User can learning course of everyone</li>
 
-<h2> Preview </h2>
 
+<h2> Start server in localhost </h2>
+<li> npm start </li>
+<li> npm run watch </li>
+<h2> Preview </h2>
 <h1> 1. LOGIN PAGE </h1>
 
 ![alt](https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihbDDWepCmZHZKSeN6oI9j-OUN0UwMQCA1N_YMB0qsBxcC8trvsBNqReiPiQLnGVXM_SXnGkoa2cNun1mf_eTXVrbXcn6KcX8Q=w1765-h1365-v0)
@@ -50,11 +53,3 @@
 <h1> 8. CONTACT  </h1>
 
 ![alt](https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihYXjoLv6_kfzROb73LIUnAguSw4s2MYGRjQTSiDvYekE5WBmrcZr3vimnX5kP-wzfubIh5xJewJ2YBwilh9jwo8EubJEk2x1co=w1765-h1365-v0)
-
-Start server: 
-1. npm start
-2. npm run watch
-
-*note: 
-GET: query parameter(gán lên link)
-POST: ẩn thông tin trên link, client -> server(tăng tính năng bảo mật) [register]
